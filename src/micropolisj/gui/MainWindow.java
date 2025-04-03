@@ -284,7 +284,18 @@ public class MainWindow extends JFrame
 		startTimer();
 		makeClean();
 	}
+	public void triggerEvent(String eventMessage) { 
+        EventDialog eventDialog = new EventDialog(this, eventMessage);
+        eventDialog.setVisible(true);
+    }
 
+    public void disasterOccurred() {
+        triggerEvent("A flood has occurred!");
+    }
+
+    public void timerReached() {
+        triggerEvent("The city has reached a population of 1000");
+    }
 	public void setEngine(Micropolis newEngine)
 	{
 		if (engine != null) { // old engine
