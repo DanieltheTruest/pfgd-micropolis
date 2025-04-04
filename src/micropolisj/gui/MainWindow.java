@@ -66,7 +66,8 @@ public class MainWindow extends JFrame
 	}
 
 	public MainWindow(Micropolis engine)
-	{
+	{	
+		
 		setIconImage(appIcon.getImage());
 
 		this.engine = engine;
@@ -283,7 +284,34 @@ public class MainWindow extends JFrame
 		reloadOptions();
 		startTimer();
 		makeClean();
+		JButton disasterButton = new JButton("Trigger Disaster");
+		disasterButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				disasterOccurred();
+			}
+		});
+		this.add(disasterButton, BorderLayout.SOUTH);
+	
+		JButton timerButton = new JButton("Trigger Timer");
+		timerButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				timerReached();
+			}
+		});
+		this.add(timerButton, BorderLayout.NORTH);
+	
+		JButton customButton = new JButton("Trigger Custom");
+		customButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				someCustomEvent();
+			}
+		});
+		this.add(customButton, BorderLayout.EAST);
 	}
+	
 	public void triggerEvent(String eventMessage) { 
         EventDialog eventDialog = new EventDialog(this, eventMessage);
         eventDialog.setVisible(true);
@@ -295,6 +323,10 @@ public class MainWindow extends JFrame
 
     public void timerReached() {
         triggerEvent("The city has reached a population of 1000");
+    }
+	
+	public void someCustomEvent() {
+        triggerEvent("The power plant has melted down!");
     }
 	public void setEngine(Micropolis newEngine)
 	{

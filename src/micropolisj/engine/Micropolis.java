@@ -10,7 +10,7 @@ package micropolisj.engine;
 
 import java.io.*;
 import java.util.*;
-
+import micropolisj.gui.MainWindow;
 import static micropolisj.engine.TileConstants.*;
 
 /**
