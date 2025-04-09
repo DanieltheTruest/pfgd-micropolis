@@ -284,29 +284,29 @@ public class MainWindow extends JFrame
 		reloadOptions();
 		startTimer();
 		makeClean();
-		JButton disasterButton = new JButton("Trigger Disaster");
+		JButton disasterButton = new JButton("Trigger Disaster1 Dialogue");
 		disasterButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				disasterOccurred();
+				disasterOccurred("Yes this is working");
 			}
 		});
 		this.add(disasterButton, BorderLayout.SOUTH);
 	
-		JButton timerButton = new JButton("Trigger Timer");
+		JButton timerButton = new JButton("Trigger Population Dialogue");
 		timerButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				timerReached();
+				timerReached("Yes this is working 2");
 			}
 		});
 		this.add(timerButton, BorderLayout.NORTH);
 	
-		JButton customButton = new JButton("Trigger Custom");
+		JButton customButton = new JButton("Trigger Disaster2 Dialogue");
 		customButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				someCustomEvent();
+				someCustomEvent("Yes this is working");
 			}
 		});
 		this.add(customButton, BorderLayout.EAST);
@@ -317,16 +317,16 @@ public class MainWindow extends JFrame
         eventDialog.setVisible(true);
     }
 
-    public void disasterOccurred() {
-        triggerEvent("A flood has occurred!");
+    public void disasterOccurred(String eventmessage) {
+        triggerEvent(eventmessage);
     }
 
-    public void timerReached() {
-        triggerEvent("The city has reached a population of 1000");
+    public void timerReached(String eventmessage) {
+        triggerEvent(eventmessage);
     }
 	
-	public void someCustomEvent() {
-        triggerEvent("The power plant has melted down!");
+	public void someCustomEvent(String eventmessage) {
+        triggerEvent(eventmessage);
     }
 	public void setEngine(Micropolis newEngine)
 	{
@@ -1570,20 +1570,25 @@ public class MainWindow extends JFrame
 			break;
 		case FLOOD:
 			getEngine().makeFlood();
+			disasterOccurred("Flooding is happening! Quickly find a way to rebuild! The citizens are drowning!!!!!!!");
 			break;
 		case MONSTER:
 			getEngine().makeMonster();
+			disasterOccurred("The monster appears from depths. It rampages across the land in an instant");
 			break;
 		case MELTDOWN:
 			if (!getEngine().makeMeltdown()) {
 				messagesPane.appendCityMessage(MicropolisMessage.NO_NUCLEAR_PLANTS);
+			disasterOccurred("This just in! Citizens report massive radioactive readings from a certain part of town. The mayer is to handle it as soon as possible and evacuate all areas!");
 			}
 			break;
 		case TORNADO:
 			getEngine().makeTornado();
+			disasterOccurred("You spin me right round baby right round like a record baby- Oh sorry, witnesses report a giant tornado heading toward your city. Preparing for it might be a good idea.");
 			break;
 		case EARTHQUAKE:
 			getEngine().makeEarthquake();
+			disasterOccurred("The earth is shaking. Tectonic plates are shifting. Your citizens are not going to have their roofs tomorrow.");
 			break;
 		default:
 			assert false; //unknown disaster
