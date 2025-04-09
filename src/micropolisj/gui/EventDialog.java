@@ -10,6 +10,7 @@ import micropolisj.engine.*;
 import static micropolisj.gui.MainWindow.formatFunds;
 import static micropolisj.gui.MainWindow.formatGameDate;
 
+// event dialogue page that creates a window
 public class EventDialog extends JDialog {
 
     public EventDialog(JFrame parent, String message) {
@@ -20,14 +21,14 @@ public class EventDialog extends JDialog {
 
         JTextArea messageArea = new JTextArea(message);
         messageArea.setEditable(false);
-        messageArea.setLineWrap(true);
+        messageArea.setLineWrap(true); //wraps text 
         messageArea.setWrapStyleWord(true);
 
         JPanel panel = new JPanel();
         JLabel label = new JLabel(message); 
-        JButton button = new JButton("Close");
+        JButton button = new JButton("Close"); //adds close button
 
-        button.addActionListener(new ActionListener() {
+        button.addActionListener(new ActionListener() { // event listener that closes if button is pressed
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();

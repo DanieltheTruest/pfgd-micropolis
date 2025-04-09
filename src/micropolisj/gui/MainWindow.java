@@ -313,11 +313,11 @@ public class MainWindow extends JFrame
 	}
 	
 	public void triggerEvent(String eventMessage) { 
-        EventDialog eventDialog = new EventDialog(this, eventMessage);
+        EventDialog eventDialog = new EventDialog(this, eventMessage); //takes a string eventmessage and produces an eventdialogue window of that message
         eventDialog.setVisible(true);
     }
 
-    public void disasterOccurred(String eventmessage) {
+    public void disasterOccurred(String eventmessage) { //following three functions are all effectively the same as of now, passing in a given string and triggering the event window
         triggerEvent(eventmessage);
     }
 
